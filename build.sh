@@ -3,7 +3,7 @@ set -euo pipefail
 cd "${0:A:h}"
 APP="$PWD/AlwaysMute.app"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
-swiftc -O -swift-version 5 -framework AppKit -framework CoreAudio -framework ServiceManagement Source/*.swift -o "$APP/Contents/MacOS/AlwaysMute"
+swiftc -O -target "$(uname -m)-apple-macosx13.0" -swift-version 5 -framework AppKit -framework CoreAudio -framework ServiceManagement Source/*.swift -o "$APP/Contents/MacOS/AlwaysMute"
 cat > "$APP/Contents/Info.plist" <<'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
